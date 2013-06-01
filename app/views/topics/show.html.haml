@@ -12,6 +12,12 @@
     - @topic.parents.each do |parent|
       %li
         = link_to parent.title, parent
+%p
+  %b Children:
+  %ul
+    - @topic.children.each do |child|
+      %li
+        = link_to child.title, child
 
 = link_to 'Edit', edit_topic_path(@topic)
 \|
