@@ -10,8 +10,9 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-// use the Bower version
+// Bower packages
+//= require d3/d3
 //= require jquery/jquery
+//
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
