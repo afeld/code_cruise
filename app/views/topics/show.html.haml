@@ -6,6 +6,12 @@
 %p
   %b Description:
   = @topic.description
+%p
+  %b Requirements:
+  %ul
+    - @topic.parents.each do |parent|
+      %li
+        = link_to parent.title, parent
 
 = link_to 'Edit', edit_topic_path(@topic)
 \|
