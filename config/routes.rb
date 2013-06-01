@@ -1,4 +1,7 @@
 Learnweb::Application.routes.draw do
+
+  root 'home#index'
+
   resources :relationships
 
   resources :topics
