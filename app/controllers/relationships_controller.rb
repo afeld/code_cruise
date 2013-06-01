@@ -14,7 +14,7 @@ class RelationshipsController < ApplicationController
 
   # GET /relationships/new
   def new
-    @relationship = Relationship.new
+    @relationship = Relationship.new(relationship_params)
   end
 
   # GET /relationships/1/edit
@@ -69,6 +69,6 @@ class RelationshipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relationship_params
-      params.require(:relationship).permit(:parent_id, :child_id)
+      params.fetch(:relationship, {}).permit(:parent_id, :child_id)
     end
 end

@@ -9,12 +9,20 @@
 %p
   %b Requirements:
   %ul
+    %li
+      [
+      = link_to 'add', new_relationship_path(relationship: { child_id: @topic.id })
+      ]
     - @topic.parents.each do |parent|
       %li
         = link_to parent.title, parent
 %p
   %b Children:
   %ul
+    %li
+      [
+      = link_to 'add', new_relationship_path(relationship: { parent_id: @topic.id })
+      ]
     - @topic.children.each do |child|
       %li
         = link_to child.title, child
@@ -22,3 +30,5 @@
 = link_to 'Edit', edit_topic_path(@topic)
 \|
 = link_to 'Back', topics_path
+\|
+= link_to 'New', new_topic_path
