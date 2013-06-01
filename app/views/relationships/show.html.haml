@@ -2,10 +2,10 @@
 
 %p
   %b Parent:
-  = @relationship.parent_id
+  = link_to @relationship.parent.title, @relationship.parent
 %p
   %b Child:
-  = @relationship.child_id
+  = link_to @relationship.child.title, @relationship.child
 
 = link_to 'Edit', edit_relationship_path(@relationship)
 \|

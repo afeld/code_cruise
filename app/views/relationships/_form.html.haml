@@ -8,9 +8,9 @@
 
   .field
     = f.label :parent_id
-    = f.number_field :parent_id
+    = f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
   .field
     = f.label :child_id
-    = f.number_field :child_id
+    = f.collection_select :child_id, Topic.all, :id, :title, prompt: true
   .actions
     = f.submit 'Save'
