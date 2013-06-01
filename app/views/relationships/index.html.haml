@@ -10,8 +10,8 @@
 
   - @relationships.each do |relationship|
     %tr
-      %td= relationship.parent_id
-      %td= relationship.child_id
+      %td= link_to relationship.parent.title, relationship.parent
+      %td= link_to relationship.child.title, relationship.child
       %td= link_to 'Show', relationship
       %td= link_to 'Edit', edit_relationship_path(relationship)
       %td= link_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
