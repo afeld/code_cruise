@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Parent:
+  = @relationship.parent_id
+%p
+  %b Child:
+  = @relationship.child_id
+
+= link_to 'Edit', edit_relationship_path(@relationship)
+\|
+= link_to 'Back', relationships_path

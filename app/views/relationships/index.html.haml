@@ -1,0 +1,21 @@
+%h1 Listing relationships
+
+%table
+  %tr
+    %th Parent
+    %th Child
+    %th
+    %th
+    %th
+
+  - @relationships.each do |relationship|
+    %tr
+      %td= relationship.parent_id
+      %td= relationship.child_id
+      %td= link_to 'Show', relationship
+      %td= link_to 'Edit', edit_relationship_path(relationship)
+      %td= link_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Relationship', new_relationship_path
