@@ -85,17 +85,29 @@
 
   // action to take on mouse click
   function onNodeClick(d) {
-    d3.select(this).select('text').transition()
-      .duration(TRANSITION_TIME)
-      .style('stroke-width', '.5px')
-      .style('font', '20px sans-serif');
+    // d3.select(this).data()[0] === d
 
-    d3.select(this).select('circle').transition()
-      .duration(TRANSITION_TIME)
-      .attr('r', NODE_RADIUS * 2);
+    if (d === selected_node) {
+      // TODO minimize
+    } else {
+      // from http://stackoverflow.com/a/13794019/358804
+      circle.sort(function (a, b) { // select the parent and sort the path's
+        if (a.id != d.id) return -1;               // a it's not the hovered element, send "a" to the back
+        else return 1;                             // a it's the hovered element, bring "a" to the front
+      });
 
-    // select node
-    selected_node = d;
+      d3.select(this).select('text').transition()
+        .duration(TRANSITION_TIME)
+        // .style('stroke-width', '.5px')
+        .style('font-size', '30px');
+
+      d3.select(this).select('circle').transition()
+        .duration(TRANSITION_TIME)
+        .attr('r', 300);
+
+      // select node
+      selected_node = d;
+    }
   }
 
 
