@@ -13,3 +13,5 @@ bower install
 rails server
 open http://localhost:3000
 ```
+
+Thanks to [Aliona Katz](https://github.com/siberiancharm) for the branding/design help.
