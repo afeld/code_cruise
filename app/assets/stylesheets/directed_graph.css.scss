@@ -11,31 +11,17 @@
     z-index: -1;
 
     background-color: #FFF;
-    cursor: default;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-
-    &:not(.active):not(.ctrl) {
-      cursor: crosshair;
-    }
   }
 
   path.link {
     fill: none;
     stroke: #000;
     stroke-width: 4px;
-    cursor: default;
-
-    svg:not(.active):not(.ctrl) & {
-      cursor: pointer;
-    }
-
-    &.selected {
-      stroke-dasharray: 10,2;
-    }
 
     &.dragline {
       pointer-events: none;

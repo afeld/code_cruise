@@ -72,15 +72,12 @@
 
   // mouse event vars
   var selected_node = null,
-      selected_link = null,
-      mousedown_link = null,
       mousedown_node = null,
       mouseup_node = null;
 
   function resetMouseVars() {
     mousedown_node = null;
     mouseup_node = null;
-    mousedown_link = null;
   }
 
   // update force layout (called automatically each iteration)
@@ -112,7 +109,7 @@
     path = path.data(links);
 
     // update existing links
-    path.classed('selected', function(d) { return d === selected_link; })
+    path
       .style('marker-start', function(d) { return d.left ? 'url(#start-arrow)' : ''; })
       .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
 
@@ -120,19 +117,8 @@
     // add new links
     path.enter().append('svg:path')
       .attr('class', 'link')
-      .classed('selected', function(d) { return d === selected_link; })
       .style('marker-start', function(d) { return d.left ? 'url(#start-arrow)' : ''; })
-      .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; })
-      .on('mousedown', function(d) {
-        if(d3.event.ctrlKey) return;
-
-        // select link
-        mousedown_link = d;
-        if(mousedown_link === selected_link) selected_link = null;
-        else selected_link = mousedown_link;
-        selected_node = null;
-        restart();
-      });
+      .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
 
     // remove old links
     path.exit().remove();
@@ -171,7 +157,6 @@
         mousedown_node = d;
         if(mousedown_node === selected_node) selected_node = null;
         else selected_node = mousedown_node;
-        selected_link = null;
 
         // reposition drag line
         drag_line
@@ -222,8 +207,6 @@
           links.push(link);
         }
 
-        // select new link
-        selected_link = link;
         selected_node = null;
         restart();
       });
