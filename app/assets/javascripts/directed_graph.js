@@ -34,7 +34,7 @@
       .links(links)
       .size([width, height])
       .linkDistance(180)
-      .charge(-500)
+      .charge(-1000)
       .on('tick', tick);
 
   // define arrow markers for graph links
