@@ -91,6 +91,8 @@
     if (d === selected_node) {
       // minimize
 
+      d3.select(this).classed('expanded', false);
+
       d3.select(this).select('text').transition()
         .duration(TRANSITION_TIME)
         .style('font-size', FONT_SIZE);
@@ -98,6 +100,11 @@
       d3.select(this).select('circle').transition()
         .duration(TRANSITION_TIME)
         .attr('r', NODE_RADIUS);
+
+      // hide description
+      d3.select(this).select('.description').transition()
+        .duration(200)
+        .attr('opacity', 0);
 
       selected_node = null;
 
@@ -110,6 +117,8 @@
         else return 1;                             // a it's the hovered element, bring "a" to the front
       });
 
+      d3.select(this).classed('expanded', true);
+
       d3.select(this).select('text').transition()
         .duration(TRANSITION_TIME)
         .style('font-size', '45px');
@@ -117,6 +126,11 @@
       d3.select(this).select('circle').transition()
         .duration(TRANSITION_TIME)
         .attr('r', 300);
+
+      // fade in description after delay
+      d3.select(this).select('.description').transition().delay(TRANSITION_TIME)
+        .duration(200)
+        .attr('opacity', 1);
 
       // select node
       selected_node = d;
@@ -153,6 +167,16 @@
       .attr('class', 'title')
       .style('font-size', FONT_SIZE)
       .text(function(d) { return d.title; });
+
+  // show node descriptions
+  g.append('svg:text')
+    .attr('x', 0)
+    .attr('y', 15)
+    .attr('class', 'description')
+    // hide it to start
+    .attr('opacity', 0)
+    .style('font-size', FONT_SIZE)
+    .text(function(d) { return d.description; });
 
   g.on('click', onNodeClick);
 
