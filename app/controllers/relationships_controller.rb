@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :new_relationship, only: [:index, :new, :create]
   before_action :set_relationship, only: [:show, :edit, :update, :destroy]
 
   # GET /relationships
@@ -14,7 +15,6 @@ class RelationshipsController < ApplicationController
 
   # GET /relationships/new
   def new
-    @relationship = Relationship.new(relationship_params)
   end
 
   # GET /relationships/1/edit
@@ -24,8 +24,6 @@ class RelationshipsController < ApplicationController
   # POST /relationships
   # POST /relationships.json
   def create
-    @relationship = Relationship.new(relationship_params)
-
     respond_to do |format|
       if @relationship.save
         format.html { redirect_to @relationship, notice: 'Relationship was successfully created.' }
@@ -63,6 +61,10 @@ class RelationshipsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def new_relationship
+      @relationship = Relationship.new(relationship_params)
+    end
+
     def set_relationship
       @relationship = Relationship.find(params[:id])
     end

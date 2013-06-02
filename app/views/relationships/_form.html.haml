@@ -1,16 +1,7 @@
 = form_for @relationship do |f|
-  - if @relationship.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@relationship.errors.count, "error")} prohibited this relationship from being saved:"
-      %ul
-        - @relationship.errors.full_messages.each do |msg|
-          %li= msg
+  = render 'form_errors'
 
-  .field
-    = f.label :parent_id
-    = f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
-  .field
-    = f.label :child_id
-    = f.collection_select :child_id, Topic.all, :id, :title, prompt: true
-  .actions
-    = f.submit 'Save'
+  = f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
+  ⇒
+  = f.collection_select :child_id, Topic.all, :id, :title, prompt: true
+  = f.submit submit_text

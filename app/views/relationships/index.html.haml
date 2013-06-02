@@ -1,21 +1,34 @@
 %h1 Listing relationships
 
-%table
-  %tr
-    %th Parent
-    %th Child
-    %th
-    %th
-    %th
+= render 'form_errors'
 
-  - @relationships.each do |relationship|
+= form_for @relationship do |f|
+  %table
     %tr
-      %td= link_to relationship.parent.title, relationship.parent
-      %td= link_to relationship.child.title, relationship.child
-      %td= link_to 'Show', relationship
-      %td= link_to 'Edit', edit_relationship_path(relationship)
-      %td= link_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Parent
+      %th
+      %th Child
+      %th
+      %th
+      %th
+
+    -# new Relationship
+    %tr
+      %td= f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
+      %td ⇒
+      %td= f.collection_select :child_id, Topic.all, :id, :title, prompt: true
+      %td= f.submit submit_text
+      %td
+      %td
+      %td
+
+    - @relationships.each do |relationship|
+      %tr
+        %td= link_to relationship.parent.title, relationship.parent
+        %td ⇒
+        %td= link_to relationship.child.title, relationship.child
+        %td= link_to 'Show', relationship
+        %td= link_to 'Edit', edit_relationship_path(relationship)
+        %td= link_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
-= link_to 'New Relationship', new_relationship_path
