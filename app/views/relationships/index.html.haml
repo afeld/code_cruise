@@ -10,7 +10,6 @@
       %th Child
       %th
       %th
-      %th
 
     -# new Relationship
     %tr
@@ -20,15 +19,13 @@
       %td= f.submit submit_text
       %td
       %td
-      %td
 
     - @relationships.each do |relationship|
       %tr
         %td= link_to relationship.parent.title, relationship.parent
         %td ⇒
         %td= link_to relationship.child.title, relationship.child
-        %td= link_to 'Show', relationship
-        %td= link_to 'Edit', edit_relationship_path(relationship)
-        %td= link_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= button_to 'Edit', edit_relationship_path(relationship)
+        %td= button_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
