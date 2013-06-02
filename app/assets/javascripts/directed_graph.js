@@ -96,7 +96,6 @@
 
     // select node
     selected_node = d;
-    restart();
   }
 
 
