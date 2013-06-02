@@ -157,8 +157,7 @@
   g.append('svg:circle')
     .attr('class', 'node')
     .attr('r', NODE_RADIUS)
-    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
-    .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); });
+    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); });
 
   // show node titles
   g.append('svg:text')
