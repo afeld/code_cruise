@@ -1,0 +1,11 @@
+#admin {
+  .admin-section {
+    float: left;
+    padding: 0 34px;
+    border-left: 1px solid #000;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
