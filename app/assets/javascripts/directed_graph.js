@@ -302,9 +302,12 @@
   // only respond once per keydown
   var lastKeyDown = -1;
 
-  function keydown() {
+  function afterKeydown() {
     d3.event.preventDefault();
+    restart();
+  }
 
+  function keydown() {
     if(lastKeyDown !== -1) return;
     lastKeyDown = d3.event.keyCode;
 
@@ -326,7 +329,7 @@
         }
         selected_link = null;
         selected_node = null;
-        restart();
+        afterKeydown();
         break;
       case 66: // B
         if(selected_link) {
@@ -334,7 +337,7 @@
           selected_link.left = true;
           selected_link.right = true;
         }
-        restart();
+        afterKeydown();
         break;
       case 76: // L
         if(selected_link) {
@@ -342,7 +345,7 @@
           selected_link.left = true;
           selected_link.right = false;
         }
-        restart();
+        afterKeydown();
         break;
       case 82: // R
         if(selected_node) {
@@ -353,7 +356,7 @@
           selected_link.left = false;
           selected_link.right = true;
         }
-        restart();
+        afterKeydown();
         break;
     }
   }
