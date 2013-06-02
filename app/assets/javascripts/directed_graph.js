@@ -170,12 +170,11 @@
 
   // show node descriptions
   g.append('svg:text')
-    .attr('x', 0)
-    .attr('y', 15)
+    .attr('x', -69)
+    .attr('y', 40)
     .attr('class', 'description')
     // hide it to start
     .attr('opacity', 0)
-    .style('font-size', FONT_SIZE)
     .text(function(d) { return d.description; });
 
   g.on('click', onNodeClick);
