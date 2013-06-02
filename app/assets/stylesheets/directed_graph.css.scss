@@ -49,11 +49,6 @@
   circle.node {
     stroke-width: 1.5px;
     cursor: pointer;
-
-    &.reflexive {
-      stroke: #000 !important;
-      stroke-width: 2.5px;
-    }
   }
 
   text {
