@@ -56,7 +56,8 @@
   // mouse event vars
   var selected_node = null;
 
-  var NODE_RADIUS = 40;
+  var NODE_RADIUS = 40,
+    FONT_SIZE = '12px';
 
   // update force layout (called automatically each iteration)
   function tick() {
@@ -88,8 +89,21 @@
     // d3.select(this).data()[0] === d
 
     if (d === selected_node) {
-      // TODO minimize
+      // minimize
+
+      d3.select(this).select('text').transition()
+        .duration(TRANSITION_TIME)
+        .style('font-size', FONT_SIZE);
+
+      d3.select(this).select('circle').transition()
+        .duration(TRANSITION_TIME)
+        .attr('r', NODE_RADIUS);
+
+      selected_node = null;
+
     } else {
+      // expand
+
       // from http://stackoverflow.com/a/13794019/358804
       circle.sort(function (a, b) { // select the parent and sort the path's
         if (a.id != d.id) return -1;               // a it's not the hovered element, send "a" to the back
@@ -98,8 +112,7 @@
 
       d3.select(this).select('text').transition()
         .duration(TRANSITION_TIME)
-        // .style('stroke-width', '.5px')
-        .style('font-size', '30px');
+        .style('font-size', '45px');
 
       d3.select(this).select('circle').transition()
         .duration(TRANSITION_TIME)
@@ -138,6 +151,7 @@
       .attr('x', 0)
       .attr('y', 4)
       .attr('class', 'title')
+      .style('font-size', FONT_SIZE)
       .text(function(d) { return d.title; });
 
   g.on('click', onNodeClick);
