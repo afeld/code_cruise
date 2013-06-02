@@ -17,7 +17,7 @@
   - @topics.each do |topic|
     %tr
       %td= link_to topic.title, topic
-      %td= button_to 'Edit', edit_topic_path(topic)
+      %td= link_to 'Edit', edit_topic_path(topic)
       %td= button_to 'Destroy', topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
