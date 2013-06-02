@@ -2,14 +2,13 @@
 
 (function(){
   // set up SVG for D3
-  var width  = 960,
-      height = 500,
+  var $win = $(window),
+      width  = $win.width(),
+      height = $win.height(),
       colors = d3.scale.category10();
 
   var svg = d3.select('.graph')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height);
+    .append('svg');
 
   // set up initial nodes and links
   //  - nodes are known by 'id', not by index in array.
@@ -40,7 +39,7 @@
       .size([width, height])
       .linkDistance(150)
       .charge(-500)
-      .on('tick', tick)
+      .on('tick', tick);
 
   // define arrow markers for graph links
   svg.append('svg:defs').append('svg:marker')
