@@ -1,4 +1,4 @@
-# CodeCruise (working title)
+# CodeCruise
 
 ## Getting Started
 
