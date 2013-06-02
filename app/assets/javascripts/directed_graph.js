@@ -169,8 +169,8 @@
 
   // show node descriptions
   g.append('svg:text')
-    .attr('x', -69)
-    .attr('y', 40)
+    .attr('x', -250)
+    .attr('y', 55)
     .attr('class', 'description')
     // hide it to start
     .attr('opacity', 0)
