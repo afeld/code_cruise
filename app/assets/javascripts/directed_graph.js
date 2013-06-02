@@ -15,15 +15,23 @@
   //  - nodes are known by 'id', not by index in array.
   //  - reflexive edges are indicated on the node (as a bold black circle).
   //  - links are always source < target; edge directions are set by 'left' and 'right'.
-  var nodes = gon.topics,
-    lastNodeId = nodes[nodes.length - 1].id,
-    links = [
-      {source: nodes[0], target: nodes[1], left: false, right: true },
-      {source: nodes[1], target: nodes[2], left: false, right: true }
-    ];
-
-  // just to match what was there before
-  nodes.forEach(function(n){ n.reflexive = true; });
+  var nodesById = {};
+  var nodes = gon.topics.map(function(topic){
+    var node = $.extend({}, topic, {
+      reflexive: true
+    });
+    nodesById[node.id] = node;
+    return node;
+  });
+  var lastNodeId = nodes[nodes.length - 1].id;
+  var links = gon.relationships.map(function(rel){
+    return $.extend({}, rel, {
+      source: nodesById[rel.parent_id],
+      target: nodesById[rel.child_id],
+      left: false,
+      right: true
+    });
+  });
 
   // init D3 force layout
   var force = d3.layout.force()
