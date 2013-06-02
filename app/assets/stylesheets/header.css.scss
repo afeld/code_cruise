@@ -5,6 +5,17 @@ header {
 
   h1 {
     margin: 0;
+    font-size: 2.5em;
+    font-family: Futura, sans-serif;
+    color: black;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .logo-back {
+    color: #000;
   }
 
   .nav {

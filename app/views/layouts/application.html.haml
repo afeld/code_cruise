@@ -7,7 +7,9 @@
     = csrf_meta_tags
   %body
     %header
-      %h1= link_to 'CodeCruise', root_path
+      %h1
+        = link_to root_path do
+          <span class="logo-front">code</span><span class="logo-back">cruise</span>
       %ul.nav
         %li= link_to 'Admin', admin_path
     = yield
