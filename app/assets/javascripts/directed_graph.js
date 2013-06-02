@@ -33,7 +33,7 @@
       .nodes(nodes)
       .links(links)
       .size([width, height])
-      .linkDistance(150)
+      .linkDistance(180)
       .charge(-500)
       .on('tick', tick);
 
@@ -56,6 +56,8 @@
   // mouse event vars
   var selected_node = null;
 
+  var NODE_RADIUS = 40;
+
   // update force layout (called automatically each iteration)
   function tick() {
     // draw directed edges with proper padding from node centers
@@ -65,8 +67,8 @@
           dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
           normX = deltaX / dist,
           normY = deltaY / dist,
-          sourcePadding = 12,
-          targetPadding = 17,
+          sourcePadding = NODE_RADIUS,
+          targetPadding = NODE_RADIUS + 5,
           sourceX = d.source.x + (sourcePadding * normX),
           sourceY = d.source.y + (sourcePadding * normY),
           targetX = d.target.x - (targetPadding * normX),
@@ -110,7 +112,7 @@
 
     g.append('svg:circle')
       .attr('class', 'node')
-      .attr('r', 12)
+      .attr('r', NODE_RADIUS)
       .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
       .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); })
       .on('mousedown', function(d) {
