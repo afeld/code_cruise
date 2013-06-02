@@ -6,6 +6,8 @@ Learnweb::Application.routes.draw do
 
   resources :topics
 
+  resource :admin, controller: :admin, only: :show
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
