@@ -15,4 +15,3 @@
 //= require jquery/jquery
 //
 //= require jquery_ujs
-//= require turbolinks
