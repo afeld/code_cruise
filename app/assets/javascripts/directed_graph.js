@@ -81,20 +81,18 @@
     });
   }
 
+  var TRANSITION_TIME = 750;
+
   // action to take on mouse click
   function onNodeClick(d) {
     d3.select(this).select('text').transition()
-      .duration(750)
-      .attr('x', 22)
-      .style('fill', 'steelblue')
-      .style('stroke', 'lightsteelblue')
+      .duration(TRANSITION_TIME)
       .style('stroke-width', '.5px')
       .style('font', '20px sans-serif');
 
     d3.select(this).select('circle').transition()
-      .duration(750)
-      .attr('r', NODE_RADIUS * 2)
-      .style('fill', 'lightsteelblue');
+      .duration(TRANSITION_TIME)
+      .attr('r', NODE_RADIUS * 2);
 
     // select node
     selected_node = d;
