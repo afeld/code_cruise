@@ -81,61 +81,58 @@
     });
   }
 
-  // update graph (called when needed)
-  function restart() {
-    // path (link) group
-    path = path.data(links);
+  // action to take on mouse click
+  function onNodeClick(d) {
+    d3.select(this).select('text').transition()
+      .duration(750)
+      .attr('x', 22)
+      .style('fill', 'steelblue')
+      .style('stroke', 'lightsteelblue')
+      .style('stroke-width', '.5px')
+      .style('font', '20px sans-serif');
 
-    // update existing links
-    path
-      .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
+    d3.select(this).select('circle').transition()
+      .duration(750)
+      .attr('r', NODE_RADIUS * 2)
+      .style('fill', 'lightsteelblue');
 
-    // add new links
-    path.enter().append('svg:path')
-      .attr('class', 'link')
-      .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
-
-    // remove old links
-    path.exit().remove();
-
-
-    // circle (node) group
-    // NB: the function arg is crucial here! nodes are known by id, not by index!
-    circle = circle.data(nodes, function(d) { return d.id; });
-
-    // update existing nodes (selected visual states)
-    circle.selectAll('circle')
-      .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); });
-
-    // add new nodes
-    var g = circle.enter().append('svg:g');
-
-    g.append('svg:circle')
-      .attr('class', 'node')
-      .attr('r', NODE_RADIUS)
-      .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
-      .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); })
-      .on('mousedown', function(d) {
-        if(d3.event.ctrlKey) return;
-
-        // select node
-        selected_node = d;
-        restart();
-      });
-
-    // show node titles
-    g.append('svg:text')
-        .attr('x', 0)
-        .attr('y', 4)
-        .attr('class', 'title')
-        .text(function(d) { return d.title; });
-
-    // remove old nodes
-    circle.exit().remove();
-
-    // set the graph in motion
-    force.start();
+    // select node
+    selected_node = d;
+    restart();
   }
 
-  restart();
+
+  // path (link) group
+  path = path.data(links);
+
+  // add new links
+  path.enter().append('svg:path')
+    .attr('class', 'link')
+    .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
+
+
+  // circle (node) group
+  // NB: the function arg is crucial here! nodes are known by id, not by index!
+  circle = circle.data(nodes, function(d) { return d.id; });
+
+  // add new nodes
+  var g = circle.enter().append('svg:g');
+
+  g.append('svg:circle')
+    .attr('class', 'node')
+    .attr('r', NODE_RADIUS)
+    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
+    .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); });
+
+  // show node titles
+  g.append('svg:text')
+      .attr('x', 0)
+      .attr('y', 4)
+      .attr('class', 'title')
+      .text(function(d) { return d.title; });
+
+  g.on('click', onNodeClick);
+
+  // set the graph in motion
+  force.start();
 })();
