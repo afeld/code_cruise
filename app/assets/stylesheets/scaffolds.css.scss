@@ -23,7 +23,8 @@ a {
   &:visited {
     color: #666;
   }
-  &:hover {
+  .nav &:hover,
+  .content &:hover {
     color: #fff;
     background-color: #000;
   }
