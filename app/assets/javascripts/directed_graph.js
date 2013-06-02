@@ -33,8 +33,8 @@
       .nodes(nodes)
       .links(links)
       .size([width, height])
-      .linkDistance(180)
-      .charge(-1000)
+      .linkDistance(250)
+      .charge(-1500)
       .on('tick', tick);
 
   // define arrow markers for graph links
@@ -56,8 +56,8 @@
   // mouse event vars
   var selected_node = null;
 
-  var NODE_RADIUS = 40,
-    FONT_SIZE = '12px';
+  var NODE_RADIUS = 65,
+    FONT_SIZE = '18px';
 
   // update force layout (called automatically each iteration)
   function tick() {
