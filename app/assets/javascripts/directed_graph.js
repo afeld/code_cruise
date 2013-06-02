@@ -5,7 +5,7 @@ var width  = 960,
     height = 500,
     colors = d3.scale.category10();
 
-var svg = d3.select('body')
+var svg = d3.select('.graph')
   .append('svg')
   .attr('width', width)
   .attr('height', height);
