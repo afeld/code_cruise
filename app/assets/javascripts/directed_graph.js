@@ -19,7 +19,6 @@
     nodesById[node.id] = node;
     return node;
   });
-  var lastNodeId = nodes[nodes.length - 1].id;
   var links = gon.relationships.map(function(rel){
     return $.extend({}, rel, {
       source: nodesById[rel.parent_id],
@@ -50,35 +49,12 @@
       .attr('d', 'M0,-5L10,0L0,5')
       .attr('fill', '#000');
 
-  svg.append('svg:defs').append('svg:marker')
-      .attr('id', 'start-arrow')
-      .attr('viewBox', '0 -5 10 10')
-      .attr('refX', 4)
-      .attr('markerWidth', 3)
-      .attr('markerHeight', 3)
-      .attr('orient', 'auto')
-    .append('svg:path')
-      .attr('d', 'M10,-5L0,0L10,5')
-      .attr('fill', '#000');
-
-  // line displayed when dragging new nodes
-  var drag_line = svg.append('svg:path')
-    .attr('class', 'link dragline hidden')
-    .attr('d', 'M0,0L0,0');
-
   // handles to link and node element groups
   var path = svg.append('svg:g').selectAll('path'),
       circle = svg.append('svg:g').selectAll('g');
 
   // mouse event vars
-  var selected_node = null,
-      mousedown_node = null,
-      mouseup_node = null;
-
-  function resetMouseVars() {
-    mousedown_node = null;
-    mouseup_node = null;
-  }
+  var selected_node = null;
 
   // update force layout (called automatically each iteration)
   function tick() {
@@ -89,8 +65,8 @@
           dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
           normX = deltaX / dist,
           normY = deltaY / dist,
-          sourcePadding = d.left ? 17 : 12,
-          targetPadding = d.right ? 17 : 12,
+          sourcePadding = 12,
+          targetPadding = 17,
           sourceX = d.source.x + (sourcePadding * normX),
           sourceY = d.source.y + (sourcePadding * normY),
           targetX = d.target.x - (targetPadding * normX),
@@ -110,14 +86,11 @@
 
     // update existing links
     path
-      .style('marker-start', function(d) { return d.left ? 'url(#start-arrow)' : ''; })
       .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
-
 
     // add new links
     path.enter().append('svg:path')
       .attr('class', 'link')
-      .style('marker-start', function(d) { return d.left ? 'url(#start-arrow)' : ''; })
       .style('marker-end', function(d) { return d.right ? 'url(#end-arrow)' : ''; });
 
     // remove old links
@@ -140,82 +113,19 @@
       .attr('r', 12)
       .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
       .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); })
-      .on('mouseover', function(d) {
-        if(!mousedown_node || d === mousedown_node) return;
-        // enlarge target node
-        d3.select(this).attr('transform', 'scale(1.1)');
-      })
-      .on('mouseout', function(d) {
-        if(!mousedown_node || d === mousedown_node) return;
-        // unenlarge target node
-        d3.select(this).attr('transform', '');
-      })
       .on('mousedown', function(d) {
         if(d3.event.ctrlKey) return;
 
         // select node
-        mousedown_node = d;
-        if(mousedown_node === selected_node) selected_node = null;
-        else selected_node = mousedown_node;
-
-        // reposition drag line
-        drag_line
-          .style('marker-end', 'url(#end-arrow)')
-          .classed('hidden', false)
-          .attr('d', 'M' + mousedown_node.x + ',' + mousedown_node.y + 'L' + mousedown_node.x + ',' + mousedown_node.y);
-
-        restart();
-      })
-      .on('mouseup', function(d) {
-        if(!mousedown_node) return;
-
-        // needed by FF
-        drag_line
-          .classed('hidden', true)
-          .style('marker-end', '');
-
-        // check for drag-to-self
-        mouseup_node = d;
-        if(mouseup_node === mousedown_node) { resetMouseVars(); return; }
-
-        // unenlarge target node
-        d3.select(this).attr('transform', '');
-
-        // add link to graph (update if exists)
-        // NB: links are strictly source < target; arrows separately specified by booleans
-        var source, target, direction;
-        if(mousedown_node.id < mouseup_node.id) {
-          source = mousedown_node;
-          target = mouseup_node;
-          direction = 'right';
-        } else {
-          source = mouseup_node;
-          target = mousedown_node;
-          direction = 'left';
-        }
-
-        var link;
-        link = links.filter(function(l) {
-          return (l.source === source && l.target === target);
-        })[0];
-
-        if(link) {
-          link[direction] = true;
-        } else {
-          link = {source: source, target: target, left: false, right: false};
-          link[direction] = true;
-          links.push(link);
-        }
-
-        selected_node = null;
+        selected_node = d;
         restart();
       });
 
-    // show node IDs
+    // show node titles
     g.append('svg:text')
         .attr('x', 0)
         .attr('y', 4)
-        .attr('class', 'id')
+        .attr('class', 'title')
         .text(function(d) { return d.title; });
 
     // remove old nodes

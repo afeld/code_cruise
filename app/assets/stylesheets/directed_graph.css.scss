@@ -22,14 +22,6 @@
     fill: none;
     stroke: #000;
     stroke-width: 4px;
-
-    &.dragline {
-      pointer-events: none;
-    }
-
-    &.hidden {
-      stroke-width: 0;
-    }
   }
 
   circle.node {
