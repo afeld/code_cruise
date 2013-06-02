@@ -1,4 +1,4 @@
-# LearnWeb (working title)
+# CodeCruise (working title)
 
 ## Getting Started
 

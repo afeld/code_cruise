@@ -1,4 +1,4 @@
-Learnweb::Application.routes.draw do
+CodeCruise::Application.routes.draw do
 
   root 'home#index'
 

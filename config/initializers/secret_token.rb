@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Learnweb::Application.config.secret_key_base = '50cc227bea66a1575520a9fc289707f2fe02cad4c3a5255ad71682b6df0106039cc82aa9f78e14d2455f258d776c16785739519d7d0a735c83b85d445cf067fb'
+CodeCruise::Application.config.secret_key_base = '50cc227bea66a1575520a9fc289707f2fe02cad4c3a5255ad71682b6df0106039cc82aa9f78e14d2455f258d776c16785739519d7d0a735c83b85d445cf067fb'

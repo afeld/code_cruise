@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Learnweb::Application.load_tasks
+CodeCruise::Application.load_tasks
