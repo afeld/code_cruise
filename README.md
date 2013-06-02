@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Requires [Node.js](http://nodejs.org/).
+Requires [Ruby](http://www.ruby-lang.org/en/) >= 1.9.3 and [Node.js](http://nodejs.org/) >= 0.8.0.
 
 ```bash
 bundle install
