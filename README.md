@@ -13,11 +13,8 @@ rake db:migrate
 npm install -g bower
 bower install
 
-rails server
-
-# in another terminal
+foreman start -f Procfile.local
 open http://localhost:3000
-postgres -D /usr/local/var/postgres
 ```
 
 ## Deploying
