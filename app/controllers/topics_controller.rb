@@ -2,13 +2,6 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
-  # GET /topics
-  # GET /topics.json
-  def index
-    @topics = Topic.all
-    respond_with @topics
-  end
-
   # GET /topics/1
   # GET /topics/1.json
   def show

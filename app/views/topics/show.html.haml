@@ -11,7 +11,7 @@
   %ul
     %li
       [
-      = link_to 'add', new_relationship_path(relationship: { child_id: @topic.id })
+      = link_to 'add', admin_path(relationship: { child_id: @topic.id })
       ]
     - @topic.parents.each do |parent|
       %li
@@ -21,7 +21,7 @@
   %ul
     %li
       [
-      = link_to 'add', new_relationship_path(relationship: { parent_id: @topic.id })
+      = link_to 'add', admin_path(relationship: { parent_id: @topic.id })
       ]
     - @topic.children.each do |child|
       %li

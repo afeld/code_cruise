@@ -3,10 +3,6 @@ require "spec_helper"
 describe TopicsController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/topics").should route_to("topics#index")
-    end
-
     it "routes to #new" do
       get("/topics/new").should route_to("topics#new")
     end

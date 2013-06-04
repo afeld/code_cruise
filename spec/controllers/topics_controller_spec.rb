@@ -30,14 +30,6 @@ describe TopicsController do
   # TopicsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all topics as @topics" do
-      topic = Topic.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:topics).should eq([topic])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested topic as @topic" do
       topic = Topic.create! valid_attributes
