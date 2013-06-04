@@ -38,9 +38,7 @@ learning paths
 
 demo
 
-http://localhost:3000
-or
-http://codecruise.herokuapp.com/
+(codecruise.herokuapp.com)
 
 
 
@@ -49,7 +47,7 @@ http://codecruise.herokuapp.com/
 technical deets
 
 * Ruby 2.0, Rails 4.0 & Postgres on Heroku
-* Bower for JS (https://gist.github.com/afeld/5704079)
+* Bower for JS (gist.github.com/afeld/5704079)
 * d3 for graph
 * really hardcore security
 
@@ -74,6 +72,7 @@ Future
 
 thx.
 
+codecruise.herokuapp.com
 
 
 

@@ -13,5 +13,7 @@
       %ul.nav
         - if is_admin?
           %li= link_to 'Admin', admin_path
+        %li
+          = link_to 'Fork', 'https://github.com/afeld/code_cruise'
     .content
       = yield
