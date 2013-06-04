@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :must_be_local
+  skip_before_filter :must_be_admin
 
   def index
     @topics = Topic.all

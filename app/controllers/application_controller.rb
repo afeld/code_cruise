@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :must_be_admin
 
   def is_admin?
-    request.host == 'localhost'
+    Rails.env != 'production'
   end
   helper_method :is_admin?
 
