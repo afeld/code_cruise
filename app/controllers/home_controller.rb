@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
   def index
+    @topics = Topic.all
     gon.push(
       relationships: Relationship.all,
-      topics: Topic.all
+      topics: @topics
     )
   end
 end

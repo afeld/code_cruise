@@ -1,5 +1,7 @@
 // from http://bl.ocks.org/rkirsling/5001347#app.css
 
+@import "shared";
+
 .graph {
   svg {
     // cover the background
@@ -35,12 +37,8 @@
 
     &.title {
       text-anchor: middle;
-      font-family: Futura, sans-serif;
+      font-family: $node-title-font;
       font-weight: bold;
-    }
-
-    &.description {
-      font-size: 18px;
     }
   }
 }

@@ -1,3 +1,30 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "shared";
+
+#home {
+  .topic_panel {
+    width: 500px;
+    margin: 60px auto;
+    list-style-type: none;
+    color: #fff;
+
+    // hide them by default, and make sure they're not blocking clicks
+    position: absolute;
+    bottom: 100%;
+    opacity: 0;
+    @include transition(opacity 200ms ease);
+
+    &.active {
+      position: static;
+      opacity: 1;
+    }
+
+    .title {
+      font-family: $node-title-font;
+      font-size: 4em;
+    }
+
+    .description {
+      font-size: 1.5em;
+    }
+  }
+}

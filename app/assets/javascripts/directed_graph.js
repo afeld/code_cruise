@@ -5,6 +5,8 @@
   var $win = $(window),
       width  = $win.width(),
       height = $win.height(),
+      // ensure it covers the screen
+      nodeExpandedRadius = Math.max(width, height) * 1.2,
       colors = d3.scale.category10();
 
   var svg = d3.select('.graph')
@@ -56,8 +58,7 @@
   // mouse event vars
   var selected_node = null;
 
-  var NODE_RADIUS = 65,
-    FONT_SIZE = '18px';
+  var NODE_RADIUS = 65;
 
   // update force layout (called automatically each iteration)
   function tick() {
@@ -88,23 +89,23 @@
   function onNodeClick(d) {
     // d3.select(this).data()[0] === d
 
+    var $panel = $('.topic_panel[data-topic-id="' + d.id + '"]');
+
     if (d === selected_node) {
       // minimize
 
       d3.select(this).classed('expanded', false);
 
       d3.select(this).select('text').transition()
-        .duration(TRANSITION_TIME)
-        .style('font-size', FONT_SIZE);
+        .delay(TRANSITION_TIME)
+        .duration(200)
+        .attr('opacity', 1);
 
       d3.select(this).select('circle').transition()
         .duration(TRANSITION_TIME)
         .attr('r', NODE_RADIUS);
 
-      // hide description
-      d3.select(this).select('.description').transition()
-        .duration(200)
-        .attr('opacity', 0);
+      $panel.removeClass('active');
 
       selected_node = null;
 
@@ -120,17 +121,16 @@
       d3.select(this).classed('expanded', true);
 
       d3.select(this).select('text').transition()
-        .duration(TRANSITION_TIME)
-        .style('font-size', '45px');
+        .duration(200)
+        .attr('opacity', 0);
 
       d3.select(this).select('circle').transition()
         .duration(TRANSITION_TIME)
-        .attr('r', 300);
+        .attr('r', nodeExpandedRadius);
 
-      // fade in description after delay
-      d3.select(this).select('.description').transition().delay(TRANSITION_TIME)
-        .duration(200)
-        .attr('opacity', 1);
+      setTimeout(function(){
+        $panel.addClass('active');
+      }, TRANSITION_TIME);
 
       // select node
       selected_node = d;
@@ -164,17 +164,8 @@
       .attr('x', 0)
       .attr('y', 4)
       .attr('class', 'title')
-      .style('font-size', FONT_SIZE)
+      .style('font-size', '18px')
       .text(function(d) { return d.title; });
-
-  // show node descriptions
-  g.append('svg:text')
-    .attr('x', -250)
-    .attr('y', 55)
-    .attr('class', 'description')
-    // hide it to start
-    .attr('opacity', 0)
-    .text(function(d) { return d.description; });
 
   g.on('click', onNodeClick);
 
