@@ -4,7 +4,9 @@ CodeCruise::Application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :topics, except: :index
+  resources :topics, except: :index do
+    resources :resources, except: :index
+  end
 
   resource :admin, controller: :admin, only: :show
 
