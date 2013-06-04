@@ -2,16 +2,16 @@
 
 = render 'relationships/form_errors'
 
-= form_for @relationship do |f|
-  %table
-    %tr
-      %th Parent
-      %th
-      %th Child
-      %th
-      %th
+%table
+  %tr
+    %th Parent
+    %th
+    %th Child
+    %th
+    %th
 
-    -# new Relationship
+  -# new Relationship
+  = form_for @relationship do |f|
     %tr
       %td= f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
       %td ⇒
@@ -20,12 +20,12 @@
       %td
       %td
 
-    - @relationships.each do |relationship|
-      %tr
-        %td= link_to relationship.parent.title, relationship.parent
-        %td ⇒
-        %td= link_to relationship.child.title, relationship.child
-        %td= link_to 'Edit', edit_relationship_path(relationship)
-        %td= button_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - @relationships.each do |relationship|
+    %tr
+      %td= link_to relationship.parent.title, relationship.parent
+      %td ⇒
+      %td= link_to relationship.child.title, relationship.child
+      %td= link_to 'Edit', edit_relationship_path(relationship)
+      %td= button_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
