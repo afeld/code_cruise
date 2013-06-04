@@ -30,37 +30,6 @@ describe RelationshipsController do
   # RelationshipsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all relationships as @relationships" do
-      relationship = Relationship.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:relationships).should eq([relationship])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested relationship as @relationship" do
-      relationship = Relationship.create! valid_attributes
-      get :show, {:id => relationship.to_param}, valid_session
-      assigns(:relationship).should eq(relationship)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new relationship as @relationship" do
-      get :new, {}, valid_session
-      assigns(:relationship).should be_a_new(Relationship)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested relationship as @relationship" do
-      relationship = Relationship.create! valid_attributes
-      get :edit, {:id => relationship.to_param}, valid_session
-      assigns(:relationship).should eq(relationship)
-    end
-  end
-
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Relationship" do
@@ -87,57 +56,6 @@ describe RelationshipsController do
         Relationship.any_instance.stub(:save).and_return(false)
         post :create, {:relationship => { "parent_id" => "invalid value" }}, valid_session
         assigns(:relationship).should be_a_new(Relationship)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Relationship.any_instance.stub(:save).and_return(false)
-        post :create, {:relationship => { "parent_id" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested relationship" do
-        relationship = Relationship.create! valid_attributes
-        # Assuming there are no other relationships in the database, this
-        # specifies that the Relationship created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Relationship.any_instance.should_receive(:update).with({ "parent_id" => "1" })
-        put :update, {:id => relationship.to_param, :relationship => { "parent_id" => "1" }}, valid_session
-      end
-
-      it "assigns the requested relationship as @relationship" do
-        relationship = Relationship.create! valid_attributes
-        put :update, {:id => relationship.to_param, :relationship => valid_attributes}, valid_session
-        assigns(:relationship).should eq(relationship)
-      end
-
-      it "redirects to the relationship" do
-        relationship = Relationship.create! valid_attributes
-        put :update, {:id => relationship.to_param, :relationship => valid_attributes}, valid_session
-        response.should redirect_to(relationship)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the relationship as @relationship" do
-        relationship = Relationship.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Relationship.any_instance.stub(:save).and_return(false)
-        put :update, {:id => relationship.to_param, :relationship => { "parent_id" => "invalid value" }}, valid_session
-        assigns(:relationship).should eq(relationship)
-      end
-
-      it "re-renders the 'edit' template" do
-        relationship = Relationship.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Relationship.any_instance.stub(:save).and_return(false)
-        put :update, {:id => relationship.to_param, :relationship => { "parent_id" => "invalid value" }}, valid_session
-        response.should render_template("edit")
       end
     end
   end

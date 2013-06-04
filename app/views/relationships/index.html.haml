@@ -8,7 +8,6 @@
     %th
     %th Child
     %th
-    %th
 
   -# new Relationship
   = form_for @relationship do |f|
@@ -18,14 +17,12 @@
       %td= f.collection_select :child_id, Topic.all, :id, :title, prompt: true
       %td= f.submit submit_text
       %td
-      %td
 
   - @relationships.each do |relationship|
     %tr
       %td= link_to relationship.parent.title, relationship.parent
       %td ⇒
       %td= link_to relationship.child.title, relationship.child
-      %td= link_to 'Edit', edit_relationship_path(relationship)
       %td= button_to 'Destroy', relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br

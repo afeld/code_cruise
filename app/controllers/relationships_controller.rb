@@ -1,25 +1,6 @@
 class RelationshipsController < ApplicationController
-  before_action :new_relationship, only: [:index, :new, :create]
-  before_action :set_relationship, only: [:show, :edit, :update, :destroy]
-
-  # GET /relationships
-  # GET /relationships.json
-  def index
-    @relationships = Relationship.all
-  end
-
-  # GET /relationships/1
-  # GET /relationships/1.json
-  def show
-  end
-
-  # GET /relationships/new
-  def new
-  end
-
-  # GET /relationships/1/edit
-  def edit
-  end
+  before_action :new_relationship, only: :create
+  before_action :set_relationship, only: :destroy
 
   # POST /relationships
   # POST /relationships.json
@@ -29,21 +10,7 @@ class RelationshipsController < ApplicationController
         format.html { redirect_to @relationship, notice: 'Relationship was successfully created.' }
         format.json { render action: 'show', status: :created, location: @relationship }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @relationship.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /relationships/1
-  # PATCH/PUT /relationships/1.json
-  def update
-    respond_to do |format|
-      if @relationship.update(relationship_params)
-        format.html { redirect_to @relationship, notice: 'Relationship was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
+        format.html { redirect_to admin_path }
         format.json { render json: @relationship.errors, status: :unprocessable_entity }
       end
     end

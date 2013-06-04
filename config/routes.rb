@@ -2,7 +2,7 @@ CodeCruise::Application.routes.draw do
 
   root 'home#index'
 
-  resources :relationships
+  resources :relationships, only: [:create, :destroy]
 
   resources :topics
 
