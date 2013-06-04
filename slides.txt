@@ -1,0 +1,71 @@
+Code Cruise
+-----------
+
+Aidan Feldman
+Aliona Katz
+
+
+
+
+
+
+Background
+
+* AF: dev, teacher (GA/NYU)
+* AK: designer gone coder
+
+
+
+
+
+
+hackerhours.org
+
+
+
+
+
+
+
+
+learning paths
+
+
+
+
+
+
+
+demo
+
+http://localhost:3000
+or
+http://codecruise.herokuapp.com/
+
+
+
+
+
+
+
+Future
+
+* hierarchy
+* submission
+* tracking experience
+* "what next?"
+* other topics (a la StackOverflow)
+* graph builder? ("How I learned X")
+
+
+
+
+
+
+thx.
+
+
+
+
+
+
