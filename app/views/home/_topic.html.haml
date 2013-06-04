@@ -3,3 +3,7 @@
     = topic.title
   %p.description
     = topic.description
+  %ul
+    - topic.resources.each do |resource|
+      %li.resource
+        = link_to resource.display_title, resource.url

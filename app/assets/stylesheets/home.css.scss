@@ -5,13 +5,18 @@
     width: 500px;
     margin: 60px auto;
     list-style-type: none;
-    color: #fff;
+    font-size: 1.5em;
 
     // hide them by default, and make sure they're not blocking clicks
     position: absolute;
     bottom: 100%;
     opacity: 0;
     @include transition(opacity 200ms ease);
+
+    &,
+    & a {
+      color: #fff;
+    }
 
     &.active {
       position: static;
@@ -20,11 +25,11 @@
 
     .title {
       font-family: $node-title-font;
-      font-size: 4em;
+      font-size: 2.75em;
     }
 
-    .description {
-      font-size: 1.5em;
+    .resource {
+      line-height: 1.6em;
     }
   }
 }
