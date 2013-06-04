@@ -8,14 +8,21 @@ header {
     font-size: 3em;
     font-family: Futura, sans-serif;
     color: black;
+    border: 2px solid black;
 
     a {
       text-decoration: none;
     }
+
+    span {
+      padding: 0 2px;
+    }
   }
 
   .logo-front {
-    color: #858585;
+    color: #D8D8D8;
+    background-color: #000;
+    margin-right: 1px;
   }
 
   .logo-back {
