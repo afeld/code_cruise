@@ -48,6 +48,7 @@ technical deets
 
 * Ruby 2.0, Rails 4.0 & Postgres on Heroku
 * Bower for JS (gist.github.com/afeld/5704079)
+* gon for data bootstrapping
 * d3 for graph
 * really hardcore security
 
@@ -62,7 +63,7 @@ Future
 * submission
 * tracking experience
 * "what next?"
-* other topics (a la StackOverflow)
+* other subjects (a la StackOverflow)
 * graph builder? ("How I learned X")
 
 
