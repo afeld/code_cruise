@@ -14,4 +14,14 @@ rails server
 open http://localhost:3000
 ```
 
+## Deploying
+
+To deploy to Heroku
+
+```bash
+heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
+```
+
+## Credits
+
 Thanks to [Aliona Katz](https://github.com/siberiancharm) for the branding/design help.

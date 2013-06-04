@@ -139,7 +139,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
-  execjs
   gon
   haml-rails
   jquery-rails

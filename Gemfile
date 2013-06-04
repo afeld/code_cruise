@@ -9,10 +9,6 @@ gem 'sass-rails', '~> 4.0.0.rc1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
-# this will cause Node.js to be included on Heroku
-# https://github.com/heroku/heroku-buildpack-ruby#assets
-gem 'execjs'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
