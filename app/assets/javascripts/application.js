@@ -13,6 +13,8 @@
 // Bower packages
 //= require d3/d3
 //= require jquery/jquery
+//= require underscore/underscore
+//= require underscore.string/lib/underscore.string
 //
 //= require jquery_ujs
 //= require turbolinks

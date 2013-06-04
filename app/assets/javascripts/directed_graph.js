@@ -165,7 +165,7 @@
       .attr('y', 4)
       .attr('class', 'title')
       .style('font-size', '18px')
-      .text(function(d) { return d.title; });
+      .text(function(d) { return _.str.truncate(d.title, 10, '…'); });
 
   g.on('click', onNodeClick);
 
