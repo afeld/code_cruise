@@ -11,6 +11,7 @@
         = link_to root_path do
           <span class="logo-front">code</span><span class="logo-back">cruise</span>
       %ul.nav
-        %li= link_to 'Admin', admin_path
+        - if is_admin?
+          %li= link_to 'Admin', admin_path
     .content
       = yield

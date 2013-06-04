@@ -29,7 +29,7 @@ heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bow
 git push heroku master
 ```
 
-To sync local database:
+To sync local database ([more info](https://devcenter.heroku.com/articles/heroku-postgres-import-export)):
 
 ```bash
 pg_dump -Fc --no-acl --no-owner code_cruise_development > ~/Dropbox/Public/code_cruise.dump
