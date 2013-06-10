@@ -24,17 +24,7 @@ To deploy to Heroku:
 ```bash
 heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
 git push heroku master
-```
-
-To sync local database ([more info](https://devcenter.heroku.com/articles/heroku-postgres-import-export)):
-
-```bash
-pg_dump -Fc --no-acl --no-owner code_cruise_development > ~/Dropbox/Public/code_cruise.dump
-open ~/Dropbox/Public/
-
-# copy the public URL of code_cruise.dump
-
-heroku pgbackups:restore DATABASE 'https://dl.dropboxusercontent.com/u/1950437/code_cruise.dump' --confirm codecruise
+./bin/export
 ```
 
 ## Credits

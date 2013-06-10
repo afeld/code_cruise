@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# syncs local PostegreSQL database to Heroku
+# https://devcenter.heroku.com/articles/heroku-postgres-import-export
+
+set -e
+
+echo -n "Dumping database..."
+pg_dump -Fc --no-acl --no-owner code_cruise_development > ~/Dropbox/Public/code_cruise.dump
+echo "done"
+
+PUBLIC_URL='https://dl.dropboxusercontent.com/u/1950437/code_cruise.dump'
+
+echo -n "Importing to Heroku..."
+heroku pgbackups:restore DATABASE $PUBLIC_URL --confirm codecruise
+echo "done"
