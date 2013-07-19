@@ -22,9 +22,11 @@ open http://localhost:3000
 To deploy to Heroku:
 
 ```bash
+# first time
 heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
-git push heroku master
-./bin/export
+
+# to deploy
+./bin/deploy
 ```
 
 ## Credits
