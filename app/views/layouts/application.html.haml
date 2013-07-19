@@ -15,5 +15,11 @@
           %li= link_to 'Admin', admin_path
         %li
           = link_to 'Fork', 'https://github.com/afeld/code_cruise'
+    - unless flash.empty?
+      %ul.flash
+        - flash.each do |type, msg|
+          %li{ class: type }
+            = msg
+
     .content
       = yield

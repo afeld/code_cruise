@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %p
   %b Title:
   = @topic.title
@@ -22,9 +20,11 @@
   %b Requirements:
   %ul
     %li
-      [
-      = link_to 'add', admin_path(relationship: { child_id: @topic.id })
-      ]
+      = form_for @topic.parent_relationships.build do |f|
+        =# render 'relationships/form_errors'
+        = f.hidden_field :child_id
+        = f.collection_select :parent_id, @other_topics, :id, :title, prompt: true
+        = f.submit 'Add'
     - @topic.parents.each do |parent|
       %li
         = link_to parent.title, parent
@@ -32,9 +32,11 @@
   %b Children:
   %ul
     %li
-      [
-      = link_to 'add', admin_path(relationship: { parent_id: @topic.id })
-      ]
+      = form_for @topic.child_relationships.build do |f|
+        =# render 'relationships/form_errors'
+        = f.hidden_field :parent_id
+        = f.collection_select :child_id, @other_topics, :id, :title, prompt: true
+        = f.submit 'Add'
     - @topic.children.each do |child|
       %li
         = link_to child.title, child

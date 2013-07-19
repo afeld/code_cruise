@@ -10,7 +10,7 @@ class RelationshipsController < ApplicationController
         format.html { redirect_to admin_url, notice: 'Relationship was successfully created.' }
         format.json { render action: 'show', status: :created, location: @relationship }
       else
-        format.html { redirect_to admin_path }
+        format.html { redirect_to admin_path, notice: "Failed to create relationship: #{@relationship.errors.full_messages.join('. ')}." }
         format.json { render json: @relationship.errors, status: :unprocessable_entity }
       end
     end

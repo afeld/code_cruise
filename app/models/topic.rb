@@ -10,4 +10,11 @@ class Topic < ActiveRecord::Base
   has_many :resources, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true
+
+  default_scope { order('title') }
+
+
+  def other
+    self.class.where('id != ?', self.id)
+  end
 end
