@@ -21,7 +21,7 @@ class AlternateTitlesController < ApplicationController
   def destroy
     @alternate_title.destroy
     respond_to do |format|
-      format.html { redirect_to admin_url }
+      format.html { redirect_to topic_url(@alternate_title.topic) }
       format.json { head :no_content }
     end
   end
