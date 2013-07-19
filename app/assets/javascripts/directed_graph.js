@@ -36,7 +36,7 @@
       .links(links)
       .size([width, height])
       .linkDistance(250)
-      .charge(-1800)
+      .charge(-1000)
       .on('tick', tick);
 
   // define arrow markers for graph links
@@ -58,7 +58,7 @@
   // mouse event vars
   var selected_node = null;
 
-  var NODE_RADIUS = 65;
+  var NODE_RADIUS = 55;
 
   // update force layout (called automatically each iteration)
   function tick() {
@@ -164,7 +164,7 @@
       .attr('x', 0)
       .attr('y', 4)
       .attr('class', 'title')
-      .style('font-size', '18px')
+      .style('font-size', '15px')
       .text(function(d) { return _.str.truncate(d.title, 10, '…'); });
 
   g.on('click', onNodeClick);
