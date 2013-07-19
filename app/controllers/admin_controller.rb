@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   # GET /admin
   def show
     @relationships = Relationship.all.order('created_at DESC')
-    @topics = Topic.all.order('title')
+    @topics = Topic.order('title')
   end
 
 
