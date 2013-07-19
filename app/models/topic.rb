@@ -6,4 +6,6 @@ class Topic < ActiveRecord::Base
   has_many :children, through: :child_relationships
 
   has_many :resources, dependent: :destroy
+
+  validates :title, presence: true, uniqueness: true
 end
