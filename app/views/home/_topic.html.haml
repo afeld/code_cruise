@@ -1,4 +1,7 @@
 .topic_panel{data: {topic_id: topic.id}}
+  - if is_admin?
+    .edit_link
+      = link_to 'Edit', topic_path(topic)
   %h2.title
     = topic.title
   - unless topic.alternate_titles.empty?

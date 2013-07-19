@@ -19,8 +19,15 @@
     }
 
     &.active {
-      position: static;
+      position: relative;
       opacity: 1;
+    }
+
+    .edit_link {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.8em;
     }
 
     .title {
