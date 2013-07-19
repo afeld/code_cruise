@@ -2,6 +2,7 @@ CodeCruise::Application.routes.draw do
 
   root 'home#index'
 
+  resources :alternate_titles, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
   resources :topics, except: :index do
