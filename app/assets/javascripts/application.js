@@ -17,4 +17,3 @@
 //= require underscore.string/lib/underscore.string
 //
 //= require jquery_ujs
-//= require turbolinks
