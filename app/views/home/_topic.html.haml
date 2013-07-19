@@ -1,6 +1,10 @@
 .topic_panel{data: {topic_id: topic.id}}
   %h2.title
     = topic.title
+  - unless topic.alternate_titles.empty?
+    %p.alternate_titles
+      a.k.a.
+      = topic.alternate_titles.map(&:title).join(', ')
   %p.description
     = topic.description
   %ul

@@ -7,7 +7,7 @@ class AlternateTitlesController < ApplicationController
   def create
     respond_to do |format|
       if @alternate_title.save
-        format.html { redirect_to admin_url, notice: 'Alternate Title was successfully created.' }
+        format.html { redirect_to topic_url(@alternate_title.topic), notice: 'Alternate Title was successfully created.' }
         format.json { render action: 'show', status: :created, location: @alternate_title }
       else
         format.html { redirect_to admin_path }

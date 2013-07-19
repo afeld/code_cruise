@@ -24,8 +24,18 @@
     }
 
     .title {
+      margin-bottom: 0;
       font-family: $node-title-font;
       font-size: 2.75em;
+    }
+
+    .alternate_titles {
+      margin-top: 0.2em;
+      font-style: italic;
+    }
+
+    .description {
+      margin-top: 2em;
     }
 
     .resource {

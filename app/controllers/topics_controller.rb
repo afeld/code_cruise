@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @alternate_title = @topic.alternate_titles.build
   end
 
   # GET /topics/new
