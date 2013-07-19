@@ -4,7 +4,7 @@
   - unless topic.alternate_titles.empty?
     %p.alternate_titles
       a.k.a.
-      = topic.alternate_titles.map(&:title).join(', ')
+      = pretty_alternate_titles(topic)
   %p.description
     = topic.description
   %ul
