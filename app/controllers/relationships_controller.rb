@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
   def create
     respond_to do |format|
       if @relationship.save
-        format.html { redirect_to @relationship, notice: 'Relationship was successfully created.' }
+        format.html { redirect_to admin_url, notice: 'Relationship was successfully created.' }
         format.json { render action: 'show', status: :created, location: @relationship }
       else
         format.html { redirect_to admin_path }
@@ -21,7 +21,7 @@ class RelationshipsController < ApplicationController
   def destroy
     @relationship.destroy
     respond_to do |format|
-      format.html { redirect_to relationships_url }
+      format.html { redirect_to admin_url }
       format.json { head :no_content }
     end
   end
