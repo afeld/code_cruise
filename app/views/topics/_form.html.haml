@@ -12,5 +12,8 @@
   .field
     = f.label :description
     = f.text_area :description
+  .field
+    = f.label :needs_review
+    = f.check_box :needs_review
   .actions
     = f.submit 'Save'

@@ -8,4 +8,10 @@
       border-left: none;
     }
   }
+
+  .needs_review {
+    a {
+      color: red;
+    }
+  }
 }
