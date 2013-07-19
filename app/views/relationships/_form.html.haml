@@ -1,7 +1,8 @@
 = form_for @relationship do |f|
-  = render 'form_errors'
-
-  = f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
-  ⇒
-  = f.collection_select :child_id, Topic.all, :id, :title, prompt: true
-  = f.submit submit_text
+  = render 'relationships/form_errors'
+  %tr
+    %td= f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
+    %td ⇒
+    %td= f.collection_select :child_id, Topic.all, :id, :title, prompt: true
+    %td= f.submit submit_text
+    %td

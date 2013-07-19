@@ -9,14 +9,7 @@
     %th Child
     %th
 
-  -# new Relationship
-  = form_for @relationship do |f|
-    %tr
-      %td= f.collection_select :parent_id, Topic.all, :id, :title, prompt: true
-      %td ⇒
-      %td= f.collection_select :child_id, Topic.all, :id, :title, prompt: true
-      %td= f.submit submit_text
-      %td
+  = render 'relationships/form'
 
   - @relationships.each do |relationship|
     %tr
