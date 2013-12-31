@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# syncs Heroku database to local
+# https://devcenter.heroku.com/articles/heroku-postgres-import-export#export
+
+set -e
+
+echo -n "Backing up database on Heroku..."
+heroku pgbackups:capture
+echo "done"
+
+echo -n "Downloading backup..."
+curl -o tmp/latest.dump `heroku pgbackups:url`
+echo "done"
+
+echo "Restoring..."
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d code_cruise_development latest.dump
+echo "done"
