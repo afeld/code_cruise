@@ -17,4 +17,8 @@ class Topic < ActiveRecord::Base
   def other
     self.class.where('id != ?', self.id)
   end
+
+  def slug
+    title.downcase.gsub('+', ' plus ').strip.gsub(/[^\w]+/, '_')
+  end
 end
