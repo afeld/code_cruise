@@ -16,7 +16,7 @@ gem 'haml-rails'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'debugger'
+  gem 'byebug'
 end
 
 group :doc do
