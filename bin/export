@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # syncs local PostegreSQL database to Heroku
-# https://devcenter.heroku.com/articles/heroku-postgres-import-export
+# https://devcenter.heroku.com/articles/heroku-postgres-import-export#import
 
 set -e
 
