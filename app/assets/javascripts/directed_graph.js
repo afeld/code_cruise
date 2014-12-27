@@ -56,7 +56,9 @@
       circle = svg.append('svg:g').selectAll('g');
 
   // mouse event vars
-  var selected_node = null;
+  // TODO consolidate these
+  var selected_node = null,
+    selected_el = null;
 
   var NODE_RADIUS = 45;
 
@@ -85,30 +87,35 @@
 
   var TRANSITION_TIME = 750;
 
+  function getPanel(d){
+    return $('.topic_panel[data-topic-id="' + d.id + '"]');
+  }
+
+  function minimizeSelected(){
+    d3.select(selected_el).classed('expanded', false);
+
+    d3.select(selected_el).select('text').transition()
+      .delay(TRANSITION_TIME)
+      .duration(200)
+      .attr('opacity', 1);
+
+    d3.select(selected_el).select('circle').transition()
+      .duration(TRANSITION_TIME)
+      .attr('r', NODE_RADIUS);
+
+    var $panel = getPanel(selected_node);
+    $panel.removeClass('active');
+
+    selected_node = null;
+    selected_el = null;
+  }
+
   // action to take on mouse click
   function onNodeClick(d) {
     // d3.select(this).data()[0] === d
 
-    var $panel = $('.topic_panel[data-topic-id="' + d.id + '"]');
-
     if (d === selected_node) {
-      // minimize
-
-      d3.select(this).classed('expanded', false);
-
-      d3.select(this).select('text').transition()
-        .delay(TRANSITION_TIME)
-        .duration(200)
-        .attr('opacity', 1);
-
-      d3.select(this).select('circle').transition()
-        .duration(TRANSITION_TIME)
-        .attr('r', NODE_RADIUS);
-
-      $panel.removeClass('active');
-
-      selected_node = null;
-
+      minimizeSelected();
     } else {
       // expand
 
@@ -129,13 +136,18 @@
         .attr('r', nodeExpandedRadius);
 
       setTimeout(function(){
+        var $panel = getPanel(d);
         $panel.addClass('active');
       }, TRANSITION_TIME);
 
       // select node
       selected_node = d;
+      selected_el = this;
     }
   }
+
+
+  $('.close').click(minimizeSelected);
 
 
   // path (link) group
