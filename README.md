@@ -9,7 +9,7 @@ brew install postgresql
 gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 
 bundle install
-rake db:migrate
+rake db:setup
 npm install -g bower
 bower install
 
