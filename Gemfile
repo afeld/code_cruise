@@ -1,20 +1,20 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails'
 
 gem 'pg'
+gem 'responders'
 
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
-
 gem 'jquery-rails'
 
 gem 'gon'
 gem 'haml-rails'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14'
   gem 'byebug'
 end
 
