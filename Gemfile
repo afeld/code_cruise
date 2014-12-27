@@ -9,6 +9,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'bower'
 
 gem 'gon'
 gem 'haml-rails'

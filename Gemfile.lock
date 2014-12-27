@@ -37,6 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    bower (0.0.2)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -177,6 +178,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bower
   byebug
   coffee-rails
   gon
