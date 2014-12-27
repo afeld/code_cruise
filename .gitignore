@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 
-app/assets/components/
+/bower_components/
 *.dump
